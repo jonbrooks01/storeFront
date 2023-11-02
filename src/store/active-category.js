@@ -9,7 +9,6 @@ const categorySlice = createSlice({
   },
   reducers: {
     setActiveCategory: (state, action) => {
-      console.log(action.payload);
       state.activeCategory = action.payload;
     },
   },
