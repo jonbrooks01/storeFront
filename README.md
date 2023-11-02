@@ -4,11 +4,11 @@ Virtual Store Phase 1: For this assignment, you will be starting the process of 
 
 Author: Jonathan Brooks
 
-[Pull Request](https://github.com/jonbrooks01/todo-app/pull/1)
+[Pull Request](https://github.com/jonbrooks01/storeFront/pull/1)
 
-[Server Repo](https://github.com/jonbrooks01/todoServer-)
+<!-- [Server Repo](https://github.com/jonbrooks01/todoServer-) -->
 
-[deployed server](https://todoapp-0suw.onrender.com)
+[deployed server](https://storefront-u0jl.onrender.com/)
 
 ## Setup
 
