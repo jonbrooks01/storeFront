@@ -1,32 +1,38 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-// import { useState } from "react";
+import { FormControl, Tab, Tabs } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-// import categorySlice from '../../store/active-category';
 import categorySlice from '../../store/active-category';
+import React from 'react';
+
+const menuItems = [
+  { label: 'All', value: 'all' },
+  { label: 'Electronics', value: 'electronics' },
+  { label: 'Food', value: 'food' },
+  { label: 'Clothing', value: 'clothing' },
+];
 
 const Categories = () => {
   const dispatch = useDispatch();
   const activeCategory = useSelector((state) => state.category.activeCategory);
 
-  const handleChange = (e) => {
-    dispatch(categorySlice.actions.setActiveCategory(e.target.value));
+  const handleChange = (e, newValue) => {
+    dispatch(categorySlice.actions.setActiveCategory(newValue));
   };
+
   return (
-    <div style={{ width: '250px' }}>
+    <div style={{ width: '100%' }}>
       <FormControl fullWidth>
-        <InputLabel id="category">Category</InputLabel>
-        <Select
-          labelId="category-label"
-          id="category"
+        <Tabs
           value={activeCategory || 'all'}
-          label="category"
           onChange={handleChange}
+          textColor="secondary"
+          indicatorColor="secondary"
+          aria-label="Category Tabs"
+          centered
         >
-          <MenuItem value={'all'}>All</MenuItem>
-          <MenuItem value={'electronics'}>Electronics</MenuItem>
-          <MenuItem value={'food'}>Food</MenuItem>
-          <MenuItem value={'clothing'}>Clothing</MenuItem>
-        </Select>
+          {menuItems.map((item) => (
+            <Tab key={item.value} label={item.label} value={item.value} />
+          ))}
+        </Tabs>
       </FormControl>
     </div>
   );
