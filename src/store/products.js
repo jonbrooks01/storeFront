@@ -5,7 +5,7 @@ const productSlice = createSlice({
   name: 'products',
   initialState: {
     productData: productData.products,
-    selectedProduct: 'all',
+    selectedProduct: null,
     // price: 'all',
   },
   reducers: {

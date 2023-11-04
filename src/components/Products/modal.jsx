@@ -1,4 +1,3 @@
-// import React from "react";
 import { Card, CardContent, CardMedia, Modal, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import productSlice from '../../store/products';
@@ -16,29 +15,31 @@ const style = {
 };
 
 const ProductModal = () => {
-  const product = useSelector((state) => state.products.selectedProduct);
+  const selectedProduct = useSelector(
+    (state) => state.products.selectedProduct
+  );
+
+  const productData = useSelector((state) => state.products.productData);
   const dispatch = useDispatch();
+
   const handleClose = () => {
-    // dispatch the action to update the selected beast
-    // it's like setting state, but we ask the store to do it
-    // dispatch the action and pass the action the payload
-    dispatch(productSlice.actions.showProduct(undefined));
+    dispatch(productSlice.actions.showProduct(null));
   };
+
+  const productToDisplay = selectedProduct
+    ? productData.find((product) => product.name === selectedProduct)
+    : null;
+
   return (
-    <Modal open={product !== undefined} onClose={handleClose}>
-      {product ? (
+    <Modal open={selectedProduct !== null} onClose={handleClose}>
+      {productToDisplay ? (
         <Card style={style}>
-          {/* <CardMedia
-            sx={{ height: 275 }}
-            image={product?.image_url}
-            title={product?.name}
-          /> */}
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {product?.name}
+              {productToDisplay.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {product?.category}
+              {productToDisplay.category}
             </Typography>
           </CardContent>
         </Card>
