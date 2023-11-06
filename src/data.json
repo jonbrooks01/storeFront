@@ -1,17 +1,117 @@
 {
-  "categories": [
-    { "name": "electronics", "displayName": "Electronics", "_id": 1 },
-    { "name": "food", "displayName": "Food", "_id": 2 },
-    { "name": "clothing", "displayName": "Clothing", "_id": 3 }
-  ],
-  "products": [
-    { "name": "TV", "category": "electronics", "price": 699.00, "inStock": 5 },
-    { "name": "Radio", "category": "electronics", "price": 99.00, "inStock": 15 },
-    { "name": "Shirt", "category": "clothing", "price": 9.00, "inStock": 25 },
-    { "name": "Socks", "category": "clothing", "price": 12.00, "inStock": 10 },
-    { "name": "Apples", "category": "food", "price": 0.99, "inStock": 500 },
-    { "name": "Eggs", "category": "food", "price": 1.99, "inStock": 12 },
-    { "name": "Bread", "category": "food", "price": 2.39, "inStock": 90 }
-  ],
-  "activeCategory": ""
-}
+  "count": 14,
+  "results": [
+  {
+  "_id": "636ac5fdd8f00a001859461c",
+  "name": "Monopoly",
+  "category": "games",
+  "inStock": 784,
+  "price": 1000,
+  "__v": 0
+  },
+  {
+  "_id": "636ac607d8f00a001859461e",
+  "name": "Smash Bros",
+  "category": "games",
+  "inStock": 361,
+  "price": 1000,
+  "__v": 0
+  },
+  {
+  "_id": "636ac528d8f00a001859460f",
+  "name": "Cookies",
+  "category": "food",
+  "inStock": 99770,
+  "price": 2.38,
+  "__v": 0
+  },
+  {
+  "_id": "636ac657d8f00a0018594622",
+  "name": "Knife",
+  "category": "weapons",
+  "inStock": 5925,
+  "price": 10,
+  "__v": 0
+  },
+  {
+  "_id": "642c496f817e9b00140439ff",
+  "name": "camera",
+  "category": "electronics",
+  "price": 109.99,
+  "inStock": 2062,
+  "__v": 0
+  },
+  {
+  "_id": "642c71c7817e9b0014043a15",
+  "name": "Banana",
+  "category": "food",
+  "price": 0.99,
+  "inStock": 680,
+  "__v": 0
+  },
+  {
+  "_id": "620333730913520018fa1d2a",
+  "name": "Stickies",
+  "category": "office",
+  "inStock": 2047,
+  "price": 10,
+  "__v": 0
+  },
+  {
+  "_id": "636ac547d8f00a0018594615",
+  "name": "iPad",
+  "category": "electronics",
+  "inStock": 9808,
+  "price": 1000,
+  "__v": 0
+  },
+  {
+  "_id": "636ac5cdd8f00a0018594619",
+  "name": "Green Jeans",
+  "category": "clothes",
+  "inStock": 79,
+  "price": 1000,
+  "__v": 0
+  },
+  {
+  "_id": "636ac617d8f00a0018594620",
+  "name": "Samurai Sword",
+  "category": "weapons",
+  "inStock": 9353,
+  "price": 1000,
+  "__v": 0
+  },
+  {
+  "_id": "642c71a8817e9b0014043a13",
+  "name": "TV",
+  "category": "electronics",
+  "price": 1099.99,
+  "inStock": 2113,
+  "__v": 0
+  },
+  {
+  "_id": "636ac522d8f00a001859460d",
+  "name": "Pizza",
+  "category": "food",
+  "inStock": 455,
+  "price": 1.99,
+  "__v": 0
+  },
+  {
+  "_id": "636ac534d8f00a0018594611",
+  "name": "Plasma TV",
+  "category": "electronics",
+  "inStock": 11894,
+  "price": 1000,
+  "__v": 0
+  },
+  {
+  "_id": "636ac5c7d8f00a0018594617",
+  "name": "Fancy Pants",
+  "category": "clothes",
+  "inStock": 869,
+  "price": 1000,
+  "__v": 0
+  }
+  ]
+  }
