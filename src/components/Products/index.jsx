@@ -7,14 +7,12 @@ import {
   CardMedia,
   Grid,
   Typography,
-  Dialog,
-  DialogContent,
-  DialogTitle,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import productSlice from '../../store/products';
 import addCartSlice from '../../store/cart';
 import ProductModal from './modal';
+import Header from '../Header';
 
 const Products = ({ product }) => {
   const dispatch = useDispatch();
@@ -86,10 +84,17 @@ const Products = ({ product }) => {
 };
 
 const ProductsList = () => {
+  const addToCart = useSelector((state) => state.addCart.addedProducts);
   const productData = useSelector((state) => state.products.productData);
   const categoryOfProducts = useSelector(
     (state) => state.category.activeCategory
   );
+
+  // const totalItems = productData.reduce((total, product) => {
+  //   const productInCart = addToCart.find((item) => item.name === product.name);
+  //   return total + (productInCart ? productInCart.quantity : 0);
+  // }, 0);
+
   console.log(categoryOfProducts);
   return (
     <div>
@@ -103,6 +108,7 @@ const ProductsList = () => {
             <Products key={product.name} product={product} />
           ))}
       </Grid>
+      {/* <Header totalItems={totalItems} /> */}
     </div>
   );
 };

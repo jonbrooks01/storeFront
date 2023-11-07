@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import addCartSlice from '../../store/cart';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -13,6 +14,16 @@ const Cart = () => {
   // const [isRemoving, setIsRemoving] = useState(false);
   const dispatch = useDispatch();
   const addToCart = useSelector((state) => state.addCart.addedProducts);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    // Calculate the total items in the cart
+    const total = addToCart.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+    setTotalItems(total);
+  }, [addToCart]);
 
   const handleDelete = (product, quantityToRemove) => {
     // Check if the product exists in the cart
