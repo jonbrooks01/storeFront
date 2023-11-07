@@ -1,6 +1,6 @@
 # LAB - 37
 
-Virtual Store Phase 2: Continue work on the e-Commerce storefront, breaking up the store into multiple reducers and sharing functionality/data between components.
+Virtual Store Phase 3: Connect the Virtual Store to an API to retrieve live data from your data source, using thunk to enable asynchronous actions.
 
 Author: Jonathan Brooks
 

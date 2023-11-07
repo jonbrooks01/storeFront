@@ -10,3 +10,5 @@ export const store = configureStore({
     addCart: addCartSlice.reducer,
   },
 });
+
+export default store;
