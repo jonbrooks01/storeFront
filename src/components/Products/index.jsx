@@ -13,6 +13,7 @@ import productSlice from '../../store/products';
 import { updateProduct } from '../../store/products';
 import addCartSlice from '../../store/cart';
 import ProductModal from './modal';
+import Header from '../Header';
 
 const Products = ({ product }) => {
   const dispatch = useDispatch();
@@ -103,8 +104,8 @@ const Products = ({ product }) => {
 };
 
 const ProductsList = () => {
+
   const productData = useSelector((state) => state.products.productData);
-  // console.log(productData);
 
   const categoryOfProducts = useSelector((state) => {
     const categoryId = state.category.activeCategory;
@@ -113,6 +114,7 @@ const ProductsList = () => {
     );
     return category ? category.name : 'all'; // Use 'All' as a fallback if no category is found
   });
+
   return (
     <div>
       <Grid container spacing={2} marginTop={'16px'}>
@@ -125,6 +127,7 @@ const ProductsList = () => {
             <Products key={product.name} product={product} />
           ))}
       </Grid>
+      {/* <Header totalItems={totalItems} /> */}
     </div>
   );
 };

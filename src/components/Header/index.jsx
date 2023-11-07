@@ -8,8 +8,21 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Popover from '@mui/material/Popover';
 import Cart from '../SimpleCart';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const totalItems = useSelector((state) => {
+    const addToCart = state.addCart.addedProducts;
+    const productData = state.products.productData;
+
+    return productData.reduce((total, product) => {
+      const productInCart = addToCart.find(
+        (item) => item.name === product.name
+      );
+      return total + (productInCart ? productInCart.quantity : 0);
+    }, 0);
+  });
+
   const [cartAnchorEl, setCartAnchorEl] = useState(null);
 
   const handleCartClick = (event) => {
@@ -28,7 +41,7 @@ const Header = () => {
           </Typography>
 
           <Button color="inherit" onClick={handleCartClick}>
-            Cart
+            Cart ({totalItems} items) {/* Display the total items here */}
           </Button>
 
           <Popover
