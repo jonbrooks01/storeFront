@@ -14,7 +14,7 @@ export const getProducts = createAsyncThunk('GET/products', async () => {
 export const updateProduct = createAsyncThunk(
   'PUT/product/:id',
   async ({ product, amount }) => {
-    const updatedProduct = { ...product, inStock: product.inStock - amount };
+    const updatedProduct = { ...product, inStock: product.inStock + amount };
 
     const response = await fetch(`${url}/products/${product._id}`, {
       method: 'PUT',
@@ -38,7 +38,7 @@ const productSlice = createSlice({
     showProduct: (state, action) => {
       state.selectedProduct = action.payload;
     },
-    updateProduct: (state, action) => {
+    updateProductInState: (state, action) => {
       const { product, amount } = action.payload;
       const updatedProduct = state.productData.find(
         (p) => p._id === product._id

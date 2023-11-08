@@ -13,7 +13,6 @@ import productSlice from '../../store/products';
 import { updateProduct } from '../../store/products';
 import addCartSlice from '../../store/cart';
 import ProductModal from './modal';
-import Header from '../Header';
 
 const Products = ({ product }) => {
   const dispatch = useDispatch();
@@ -40,9 +39,10 @@ const Products = ({ product }) => {
             quantity: existingProduct.quantity + 1, // Increment the quantity
           })
         );
+        dispatch(updateProduct({ product, amount: -1 }));
         // Dispatch the updateProduct action to decrease in-stock quantity
         await dispatch(
-          productSlice.actions.updateProduct({
+          productSlice.actions.updateProductInState({
             product: product,
             amount: -1, // Decrease the in-stock quantity by 1
           })
@@ -58,7 +58,7 @@ const Products = ({ product }) => {
       dispatch(addCartSlice.actions.addItemToCart(productData));
       // Dispatch the updateProduct action to decrease in-stock quantity
       await dispatch(
-        productSlice.actions.updateProduct({
+        productSlice.actions.updateProductInState({
           product: product,
           amount: -1, // Decrease the in-stock quantity by 1
         })
@@ -104,7 +104,6 @@ const Products = ({ product }) => {
 };
 
 const ProductsList = () => {
-
   const productData = useSelector((state) => state.products.productData);
 
   const categoryOfProducts = useSelector((state) => {

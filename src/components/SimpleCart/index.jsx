@@ -94,7 +94,7 @@ const Cart = () => {
       console.log('After update - product.inStock:', newInStockValue);
 
       dispatch(
-        productSlice.actions.updateProduct({
+        productSlice.actions.updateProductInState({
           product: {
             ...product,
             inStock: newInStockValue,
