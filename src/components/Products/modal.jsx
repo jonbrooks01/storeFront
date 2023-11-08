@@ -38,6 +38,11 @@ const ProductModal = () => {
             <Typography gutterBottom variant="h5" component="div">
               {productToDisplay.name}
             </Typography>
+            <CardMedia
+              sx={{ height: 275 }}
+              image={`http://source.unsplash.com/random?${productToDisplay.name}`}
+              title={productToDisplay.name}
+            />
             <Typography variant="body2" color="text.secondary">
               {productToDisplay.category}
             </Typography>

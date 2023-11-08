@@ -15,7 +15,7 @@ export const updateProduct = createAsyncThunk(
   'PUT/product/:id',
   async ({ product, amount }) => {
     const updatedProduct = { ...product, inStock: product.inStock + amount };
-
+    if (!product._id) return console.log(product);
     const response = await fetch(`${url}/products/${product._id}`, {
       method: 'PUT',
       body: JSON.stringify(updatedProduct),

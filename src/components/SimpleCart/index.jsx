@@ -9,12 +9,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import productSlice from '../../store/products';
+import { updateProduct } from '../../store/products';
 // import './Cart.scss'; // Import your SCSS file for styling
 
 const Cart = () => {
-  // const [isRemoving, setIsRemoving] = useState(false);
   const dispatch = useDispatch();
   const addToCart = useSelector((state) => state.addCart.addedProducts);
+  const productData = useSelector((state) => state.products.productData);
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
@@ -25,39 +26,6 @@ const Cart = () => {
     );
     setTotalItems(total);
   }, [addToCart]);
-
-  // const handleDelete = (product, quantityToRemove) => {
-  //   // Check if the product exists in the cart
-  //   const existingProduct = addToCart.find(
-  //     (item) => item.name === product.name
-  //   );
-
-  //   if (existingProduct) {
-  //     // Calculate the new quantity
-  //     const newQuantity = existingProduct.quantity - quantityToRemove;
-
-  //     console.log('New Quantity:', newQuantity);
-
-  //     if (newQuantity <= 0) {
-  //       // If the new quantity is zero or negative, remove the product from the cart
-  //       dispatch(addCartSlice.actions.removeItemFromCart(product));
-  //     } else {
-  //       // Update the quantity of the product in the cart
-  //       dispatch(
-  //         addCartSlice.actions.updateCartItemQuantity({
-  //           name: product.name,
-  //           quantity: newQuantity,
-  //         })
-  //       );
-  //       dispatch(
-  //         productSlice.actions.updateProduct({
-  //           product: product, // Pass the product
-  //           amount: 1, // Increase the in-stock quantity by 1
-  //         })
-  //       );
-  //     }
-  //   }
-  // };
 
   const handleDelete = (product, quantityToRemove) => {
     const existingProduct = addToCart.find(
@@ -77,11 +45,13 @@ const Cart = () => {
           })
         );
 
-        console.log('Before update - product.inStock:', product.inStock);
-
+        // console.log('Before update - product.inStock:', product.inStock);
+        const apiProduct = productData.find((p) => p.name === product.name);
+        console.log(apiProduct);
+        dispatch(updateProduct({ product: apiProduct, amount: +1 }));
         // Dispatch the updateProduct action to increase in-stock quantity
         dispatch(
-          productSlice.actions.updateProduct({
+          productSlice.actions.updateProductInState({
             product: product,
             amount: 1, // Increase the in-stock quantity by 1
           })
@@ -105,12 +75,12 @@ const Cart = () => {
     }
   };
 
-  const handleAdd = (product, quantityToAdd) => {
+  const handleAdd = async (product, quantityToAdd) => {
     // Check if the product exists in the cart
     const existingProduct = addToCart.find(
       (item) => item.name === product.name
     );
-
+    console.log(product);
     if (existingProduct) {
       // Calculate the new quantity
       const newQuantity = existingProduct.quantity + quantityToAdd;
@@ -122,15 +92,31 @@ const Cart = () => {
           quantity: newQuantity,
         })
       );
+      const apiProduct = productData.find((p) => p.name === product.name);
+      console.log(apiProduct);
+      dispatch(updateProduct({ product: apiProduct, amount: -1 }));
+
+      await dispatch(
+        productSlice.actions.updateProductInState({
+          product: product,
+          amount: -1, // Decrease the in-stock quantity by 1
+        })
+      );
     }
   };
 
   const calculateTotal = () => {
     let total = 0;
+
     addToCart.forEach((product) => {
       total += product.price * product.quantity;
     });
-    return Math.floor(total);
+
+    // Format the total as currency
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(total);
   };
 
   return (
@@ -172,7 +158,7 @@ const Cart = () => {
         </tbody>
       </table>
       <div>
-        <strong>Total:</strong> ${calculateTotal()}
+        <strong>Total:</strong> {calculateTotal()}
       </div>
     </div>
   );

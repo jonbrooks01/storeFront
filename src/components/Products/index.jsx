@@ -69,11 +69,11 @@ const Products = ({ product }) => {
   return (
     <Grid item xs={'auto'}>
       <Card align="center">
-        {/* <CardMedia
+        <CardMedia
           sx={{ height: 275 }}
-          // image={beast.image_url}
-          // title={products.name}
-        /> */}
+          image={`http://source.unsplash.com/random?${product.name}`}
+          title={product.name}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {product.name}
