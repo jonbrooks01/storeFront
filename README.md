@@ -1,6 +1,6 @@
 # LAB - 37
 
-Virtual Store Phase 3: Connect the Virtual Store to an API to retrieve live data from your data source, using thunk to enable asynchronous actions.
+Virtual Store Phase 4: Complete work on the Virtual Store by adding detail pages for individual products as well as the the cart checkout page.
 
 Author: Jonathan Brooks
 

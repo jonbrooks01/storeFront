@@ -13,6 +13,8 @@ import productSlice from '../../store/products';
 import { updateProduct } from '../../store/products';
 import addCartSlice from '../../store/cart';
 import ProductModal from './modal';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 
 const Products = ({ product }) => {
   const dispatch = useDispatch();
@@ -70,10 +72,23 @@ const Products = ({ product }) => {
     <Grid item xs={'auto'}>
       <Card align="center">
         <CardMedia
-          sx={{ height: 275 }}
+          sx={{ height: 275, position: 'relative' }}
           image={`http://source.unsplash.com/random?${product.name}`}
           title={product.name}
-        />
+        >
+          <Button
+            variant="contained"
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              backgroundColor: 'transparent',
+            }}
+            onClick={handleClick}
+          >
+            <ZoomInIcon />
+          </Button>
+        </CardMedia>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {product.name}
@@ -87,10 +102,10 @@ const Products = ({ product }) => {
         </CardContent>
         <CardActions>
           <Button size="small" onClick={() => handleAdd(product)}>
-            Add To Cart
+            <AddShoppingCartIcon />
           </Button>
           <Button size="small" onClick={handleClick}>
-            Quick View
+            View Details
           </Button>
         </CardActions>
       </Card>

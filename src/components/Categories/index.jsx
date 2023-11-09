@@ -2,13 +2,6 @@ import { FormControl, Tab, Tabs } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import categorySlice from '../../store/active-category';
 
-// const menuItems = [
-//   { label: 'All', value: 'all' },
-//   { label: 'Electronics', value: 'electronics' },
-//   { label: 'Food', value: 'food' },
-//   { label: 'Clothing', value: 'clothing' },
-// ];
-
 const Categories = () => {
   const dispatch = useDispatch();
   const activeCategory = useSelector((state) => state.category.activeCategory);
