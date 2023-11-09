@@ -5,17 +5,26 @@ import Typography from '@mui/material/Typography';
 
 const Footer = () => {
   return (
-    <Box>
-      {/* <AppBar position="static" style={{ padding: '4px' }}> */}
-      <Typography
-        variant="subtitle2"
-        component="div"
-        sx={{ flexGrow: 1 }}
-        align="center"
-      >
-        &copy; Jonathan Brooks
-      </Typography>
-      {/* </AppBar> */}
+    <Box
+      style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+      }}
+    >
+      <AppBar position="static">
+        <Toolbar>
+          <Typography
+            variant="subtitle2"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            align="center"
+          >
+            &copy; Jonathan Brooks
+          </Typography>
+        </Toolbar>
+      </AppBar>
     </Box>
   );
 };

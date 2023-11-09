@@ -4,11 +4,14 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { ShoppingCart } from '@mui/icons-material';
+// import IconButton from '@mui/material/IconButton';
+// import MenuIcon from '@mui/icons-material/Menu';
 import Popover from '@mui/material/Popover';
 import Cart from '../SimpleCart';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Header = () => {
   const totalItems = useSelector((state) => {
@@ -40,8 +43,32 @@ const Header = () => {
             Jonathan's Store
           </Typography>
 
+          <nav>
+            <ul
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                listStyle: 'none',
+                padding: 10,
+              }}
+            >
+              <Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>
+                <HomeIcon />
+              </Link>
+              <Link
+                to={'/products'}
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
+                Products
+              </Link>
+
+              {/* <li style={{ marginRight: '10px' }}></li> */}
+              {/* Add other links here with similar <li> elements */}
+            </ul>
+          </nav>
           <Button color="inherit" onClick={handleCartClick}>
-            Cart ({totalItems} items) {/* Display the total items here */}
+            <ShoppingCart />({totalItems} items){' '}
+            {/* Display the total items here */}
           </Button>
 
           <Popover

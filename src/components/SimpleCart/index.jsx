@@ -10,6 +10,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import productSlice from '../../store/products';
 import { updateProduct } from '../../store/products';
+import { Link } from 'react-router-dom';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 // import './Cart.scss'; // Import your SCSS file for styling
 
 const Cart = () => {
@@ -121,7 +123,7 @@ const Cart = () => {
 
   return (
     <div>
-      <table>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
             <th>Product</th>
@@ -132,18 +134,25 @@ const Cart = () => {
         </thead>
         <tbody>
           {addToCart.map((product, index) => (
-            <tr key={index}>
-              <td>{product.name}</td>
-              <td>{product.quantity}</td>
-              <td>${Math.floor(product.price * product.quantity)}</td>
-              <td>
+            <tr key={index} style={{ borderBottom: '1px solid #ccc' }}>
+              <td style={{ padding: '10px' }}>{product.name}</td>
+              <td style={{ padding: '10px' }}>{product.quantity}</td>
+              <td style={{ padding: '10px' }}>
+                ${Math.floor(product.price * product.quantity)}
+              </td>
+              <td style={{ padding: '10px' }}>
                 <IconButton
                   onClick={() => handleDelete(product, 1)}
                   size="small"
+                  style={{ marginRight: '5px' }}
                 >
                   <RemoveIcon />
                 </IconButton>
-                <IconButton onClick={() => handleAdd(product, 1)} size="small">
+                <IconButton
+                  onClick={() => handleAdd(product, 1)}
+                  size="small"
+                  style={{ marginRight: '5px' }}
+                >
                   <AddIcon />
                 </IconButton>
                 <IconButton
@@ -157,8 +166,27 @@ const Cart = () => {
           ))}
         </tbody>
       </table>
-      <div>
-        <strong>Total:</strong> {calculateTotal()}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingRight: '10px',
+        }}
+      >
+        <strong>Total: {calculateTotal()} </strong>
+        <Link
+          to="/shoppingCart"
+          style={{
+            textDecoration: 'none',
+            color: 'black',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <ShoppingCartCheckoutIcon />
+          <span style={{ marginLeft: '5px' }}>Checkout</span>
+        </Link>
       </div>
     </div>
   );
