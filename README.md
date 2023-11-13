@@ -1,4 +1,4 @@
-# LAB - 37
+# LAB - 39
 
 Virtual Store Phase 4: Complete work on the Virtual Store by adding detail pages for individual products as well as the the cart checkout page.
 
