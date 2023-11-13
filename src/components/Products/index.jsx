@@ -15,6 +15,7 @@ import addCartSlice from '../../store/cart';
 import ProductModal from './modal';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import { Link } from 'react-router-dom';
 
 const Products = ({ product }) => {
   const dispatch = useDispatch();
@@ -104,9 +105,22 @@ const Products = ({ product }) => {
           <Button size="small" onClick={() => handleAdd(product)}>
             <AddShoppingCartIcon />
           </Button>
-          <Button size="small" onClick={handleClick}>
+
+          <Link
+            size="small"
+            to={`/productDetails/${product.name}`}
+            style={{
+              display: 'block',
+              marginTop: '8px',
+              textDecoration: 'none',
+              color: '#1976D2', // Set your desired text color
+              fontWeight: 'bold',
+              transition: 'color 0.3s ease-in-out',
+            }}
+            color="primary"
+          >
             View Details
-          </Button>
+          </Link>
         </CardActions>
       </Card>
       <ProductModal
