@@ -16,10 +16,7 @@ import {
 
 import ShoppingCart from './components/ShoppingCart';
 import ProductDetails from './components/ProductDetails';
-// const Home = () => {
-//   // Your main content component
-//   return <ProductList />; // Assuming Todo is your main content
-// };
+
 const App = () => {
   const dispatch = useDispatch();
   const productData = useSelector((state) => state.products.productData);
@@ -39,7 +36,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductPage />} />
-          <Route path="/productDetails" element={<ProductDetails />} />
+          <Route
+            path="/productDetails/:productName"
+            element={<ProductDetails />}
+          />
           <Route path="/shoppingCart" element={<ShoppingCart />} />
         </Routes>
       </Router>
