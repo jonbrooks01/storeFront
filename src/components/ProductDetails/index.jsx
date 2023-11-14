@@ -16,7 +16,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import productSlice from '../../store/products';
+import productSlice, { updateProduct } from '../../store/products';
 import addCartSlice from '../../store/cart';
 const containerStyle = {
   maxWidth: 800,
@@ -103,8 +103,8 @@ const ProductDetails = () => {
             quantity: existingProduct.quantity + 1, // Increment the quantity
           })
         );
-
-        dispatch(updateProduct({ product: { name, price }, amount: -1 }));
+        console.log(updateProduct);
+        dispatch(updateProduct({ product, amount: -1 }));
         // Dispatch the updateProduct action to decrease in-stock quantity
         await dispatch(
           productSlice.actions.updateProductInState({
@@ -182,7 +182,7 @@ const ProductDetails = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart(productToDisplay)}
               style={{ marginTop: '16px' }}
             >
               Add To Cart
